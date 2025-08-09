@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_afddd1b3b336a5ac226c759adb7e60d2 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_afddd1b3b336a5ac226c759adb7e60d2" ></div>
+        
+    
+<div style="position: fixed; 
+            bottom: 50px; left: 50px; width: 220px; height: 190px; 
+            border:2px solid grey; z-index:9999; font-size:14px;
+            background-color:white; padding: 10px;">
+<b>Legend</b><br>
+<svg width="20" height="10"><rect width="20" height="10" style="fill:darkpurple"/></svg> Pre-colonial<br>
+<svg width="20" height="10"><rect width="20" height="10" style="fill:orange"/></svg> Colonial<br>
+<svg width="20" height="10"><rect width="20" height="10" style="fill:blue"/></svg> Post-independence<br>
+<svg width="20" height="10"><rect width="20" height="10" style="fill:red"/></svg> Modern conflict<br>
+<hr style="margin:4px 0;">
+<svg width="20" height="10"><line x1="0" y1="5" x2="20" y2="5" style="stroke:black;stroke-width:2;stroke-dasharray:5,5"/></svg> Event progression
+</div>
+
+<div style="position: fixed; top: 10px; left: 50%; transform: translateX(-50%);
+            background-color: white; padding: 10px; border: 2px solid grey; z-index:9999;
+            font-size:16px; font-weight:bold;">
+Shan State Historical Timeline Map (13th Century–2025)
+</div>
+</body>
+<script>
+    
+    
+            var map_afddd1b3b336a5ac226c759adb7e60d2 = L.map(
+                "map_afddd1b3b336a5ac226c759adb7e60d2",
+                {
+                    center: [22.0, 99.5],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 6,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_722d3eb139ba67b83424e83a150de4f8 = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_afddd1b3b336a5ac226c759adb7e60d2);
+        
+    
+            var polygon_b87629c2399fb976b8639b3e5a363831 = L.polygon(
+                [[25.0, 97.5], [25.0, 101.5], [20.0, 101.5], [20.0, 97.5]],
+                {"bubblingMouseEvents": true, "color": "gold", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gold", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_afddd1b3b336a5ac226c759adb7e60d2);
+        
+    
+        var popup_b68374b9ef4e0b8728bad024687ae7ec = L.popup({"maxWidth": "100%"});
+
+        
+            var html_bedc5846af03a851ed29b62c1032bc33 = $(`<div id="html_bedc5846af03a851ed29b62c1032bc33" style="width: 100.0%; height: 100.0%;">Pre-colonial Shan polities (~13th–19th centuries)</div>`)[0];
+            popup_b68374b9ef4e0b8728bad024687ae7ec.setContent(html_bedc5846af03a851ed29b62c1032bc33);
+        
+
+        polygon_b87629c2399fb976b8639b3e5a363831.bindPopup(popup_b68374b9ef4e0b8728bad024687ae7ec)
+        ;
+
+        
+    
+    
+            var polygon_ff6fb5a1d5eef22afb878e48c1c66f86 = L.polygon(
+                [[24.5, 97.8], [24.5, 101.2], [20.2, 101.2], [20.2, 97.8]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_afddd1b3b336a5ac226c759adb7e60d2);
+        
+    
+        var popup_3ca4874bf54ec27c12f6c24c24605133 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_fc3564aad447c466520283156c1ff28e = $(`<div id="html_fc3564aad447c466520283156c1ff28e" style="width: 100.0%; height: 100.0%;">Colonial-era Shan States (1885–1948)</div>`)[0];
+            popup_3ca4874bf54ec27c12f6c24c24605133.setContent(html_fc3564aad447c466520283156c1ff28e);
+        
+
+        polygon_ff6fb5a1d5eef22afb878e48c1c66f86.bindPopup(popup_3ca4874bf54ec27c12f6c24c24605133)
+        ;
+
+        
+    
+    
+            var polygon_d1d58d9182d41c3649176bf2180b8151 = L.polygon(
+                [[24.3, 98.0], [24.3, 100.8], [20.4, 100.8], [20.4, 98.0]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_afddd1b3b336a5ac226c759adb7e60d2);
+        
+    
+        var popup_40783ed3cc0de45beddc55994b9a30ca = L.popup({"maxWidth": "100%"});
+
+        
+            var html_02b52a72cdf73ce74d99b011fceafb4b = $(`<div id="html_02b52a72cdf73ce74d99b011fceafb4b" style="width: 100.0%; height: 100.0%;">Modern Shan State boundary (post-1948)</div>`)[0];
+            popup_40783ed3cc0de45beddc55994b9a30ca.setContent(html_02b52a72cdf73ce74d99b011fceafb4b);
+        
+
+        polygon_d1d58d9182d41c3649176bf2180b8151.bindPopup(popup_40783ed3cc0de45beddc55994b9a30ca)
+        ;
+
+        
+    
+    
+            var marker_a2ac96c41d206f36eda55af009ceb8d7 = L.marker(
+                [21.29, 99.62],
+                {}
+            ).addTo(map_afddd1b3b336a5ac226c759adb7e60d2);
+        
+    
+            var icon_1a69c5a91fe649e88b80364713af42ff = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_a2ac96c41d206f36eda55af009ceb8d7.setIcon(icon_1a69c5a91fe649e88b80364713af42ff);
+        
+    
+        var popup_3ad10ceff2cb31b4a1f48007e40b2a21 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f1f3dacc7ed6f97125667e8510002998 = $(`<div id="html_f1f3dacc7ed6f97125667e8510002998" style="width: 100.0%; height: 100.0%;">Historic capital of eastern Shan; key in trade with Laos/China</div>`)[0];
+            popup_3ad10ceff2cb31b4a1f48007e40b2a21.setContent(html_f1f3dacc7ed6f97125667e8510002998);
+        
+
+        marker_a2ac96c41d206f36eda55af009ceb8d7.bindPopup(popup_3ad10ceff2cb31b4a1f48007e40b2a21)
+        ;
+
+        
+    
+    
+            marker_a2ac96c41d206f36eda55af009ceb8d7.bindTooltip(
+                `<div>
+                     Kengtung
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b2d0f1c9c14301f83894b80532f993cb = L.marker(
+                [22.93, 97.75],
+                {}
+            ).addTo(map_afddd1b3b336a5ac226c759adb7e60d2);
+        
+    
+            var icon_a6e305c661a7d2efb4b406656c5bee2e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_b2d0f1c9c14301f83894b80532f993cb.setIcon(icon_a6e305c661a7d2efb4b406656c5bee2e);
+        
+    
+        var popup_a34c155a44c1317821a3e2888879d73d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_dbfa5db2aa49ff0705f13b74dde6ffed = $(`<div id="html_dbfa5db2aa49ff0705f13b74dde6ffed" style="width: 100.0%; height: 100.0%;">Major junction on Burma Road; strategic military post</div>`)[0];
+            popup_a34c155a44c1317821a3e2888879d73d.setContent(html_dbfa5db2aa49ff0705f13b74dde6ffed);
+        
+
+        marker_b2d0f1c9c14301f83894b80532f993cb.bindPopup(popup_a34c155a44c1317821a3e2888879d73d)
+        ;
+
+        
+    
+    
+            marker_b2d0f1c9c14301f83894b80532f993cb.bindTooltip(
+                `<div>
+                     Lashio
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_88e1e02bb2d7ce747649aa9b93ae20f6 = L.marker(
+                [23.97, 98.62],
+                {}
+            ).addTo(map_afddd1b3b336a5ac226c759adb7e60d2);
+        
+    
+            var icon_0ab46427d4466d2b863e45ad0a08fc55 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_88e1e02bb2d7ce747649aa9b93ae20f6.setIcon(icon_0ab46427d4466d2b863e45ad0a08fc55);
+        
+    
+        var popup_a39f013d2cb821bafa603142162edb46 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_2b287967efd64051033cc066999b8076 = $(`<div id="html_2b287967efd64051033cc066999b8076" style="width: 100.0%; height: 100.0%;">Main border trade point with China</div>`)[0];
+            popup_a39f013d2cb821bafa603142162edb46.setContent(html_2b287967efd64051033cc066999b8076);
+        
+
+        marker_88e1e02bb2d7ce747649aa9b93ae20f6.bindPopup(popup_a39f013d2cb821bafa603142162edb46)
+        ;
+
+        
+    
+    
+            marker_88e1e02bb2d7ce747649aa9b93ae20f6.bindTooltip(
+                `<div>
+                     Muse
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1707270c09f5a6e3ed5c44d5f49f78e0 = L.marker(
+                [21.88, 100.07],
+                {}
+            ).addTo(map_afddd1b3b336a5ac226c759adb7e60d2);
+        
+    
+            var icon_237e5881a2e926f7e339695700ccc8d9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_1707270c09f5a6e3ed5c44d5f49f78e0.setIcon(icon_237e5881a2e926f7e339695700ccc8d9);
+        
+    
+        var popup_a074d9e27414edc48232d91d9f761f08 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_96454a1097be742094262c65977f01a2 = $(`<div id="html_96454a1097be742094262c65977f01a2" style="width: 100.0%; height: 100.0%;">Former frontier town in colonial boundary disputes</div>`)[0];
+            popup_a074d9e27414edc48232d91d9f761f08.setContent(html_96454a1097be742094262c65977f01a2);
+        
+
+        marker_1707270c09f5a6e3ed5c44d5f49f78e0.bindPopup(popup_a074d9e27414edc48232d91d9f761f08)
+        ;
+
+        
+    
+    
+            marker_1707270c09f5a6e3ed5c44d5f49f78e0.bindTooltip(
+                `<div>
+                     Mong Sing
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f38ae7363260dada3e8c069f81c8a0c1 = L.marker(
+                [20.78, 96.95],
+                {}
+            ).addTo(map_afddd1b3b336a5ac226c759adb7e60d2);
+        
+    
+            var icon_dffd1c5f92403338b6545525cd6c5194 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_f38ae7363260dada3e8c069f81c8a0c1.setIcon(icon_dffd1c5f92403338b6545525cd6c5194);
+        
+    
+        var popup_90cd96156c94b74fade6c3511fe06263 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_236fbdd87cba8c6da5cbd0267d2febc9 = $(`<div id="html_236fbdd87cba8c6da5cbd0267d2febc9" style="width: 100.0%; height: 100.0%;">Modern capital of Shan State; administrative hub</div>`)[0];
+            popup_90cd96156c94b74fade6c3511fe06263.setContent(html_236fbdd87cba8c6da5cbd0267d2febc9);
+        
+
+        marker_f38ae7363260dada3e8c069f81c8a0c1.bindPopup(popup_90cd96156c94b74fade6c3511fe06263)
+        ;
+
+        
+    
+    
+            marker_f38ae7363260dada3e8c069f81c8a0c1.bindTooltip(
+                `<div>
+                     Taunggyi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_36f9e14585b5e65015d686c9fd489a1d = L.marker(
+                [22.5, 100.5],
+                {}
+            ).addTo(map_afddd1b3b336a5ac226c759adb7e60d2);
+        
+    
+            var icon_867f779358c5a73c0fdb94375aa09d68 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "white", "markerColor": "darkpurple", "prefix": "glyphicon"}
+            );
+            marker_36f9e14585b5e65015d686c9fd489a1d.setIcon(icon_867f779358c5a73c0fdb94375aa09d68);
+        
+    
+        var popup_48564b4be25e56776311356809ae1911 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f79daaf1b3e07b1b9b57e9fcda327ca7 = $(`<div id="html_f79daaf1b3e07b1b9b57e9fcda327ca7" style="width: 100.0%; height: 100.0%;"><b>Mongol Invasion of Shan Polities</b><br><i>c. 1287</i><br>Mongol forces enter Shan highlands, leading to tributary relations with Yuan China.</div>`)[0];
+            popup_48564b4be25e56776311356809ae1911.setContent(html_f79daaf1b3e07b1b9b57e9fcda327ca7);
+        
+
+        marker_36f9e14585b5e65015d686c9fd489a1d.bindPopup(popup_48564b4be25e56776311356809ae1911)
+        ;
+
+        
+    
+    
+            marker_36f9e14585b5e65015d686c9fd489a1d.bindTooltip(
+                `<div>
+                     c. 1287 - Mongol Invasion of Shan Polities
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5fed14048a3fb5a21bc0b9cd44bfb26e = L.marker(
+                [22.3, 98.8],
+                {}
+            ).addTo(map_afddd1b3b336a5ac226c759adb7e60d2);
+        
+    
+            var icon_3889d8ce4f9c14cd713309bba4d2c03b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "white", "markerColor": "darkpurple", "prefix": "glyphicon"}
+            );
+            marker_5fed14048a3fb5a21bc0b9cd44bfb26e.setIcon(icon_3889d8ce4f9c14cd713309bba4d2c03b);
+        
+    
+        var popup_b84572b4ee336127d1e21bae501c0696 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_b0d48aae10b6149d99ae6ed78e5866ce = $(`<div id="html_b0d48aae10b6149d99ae6ed78e5866ce" style="width: 100.0%; height: 100.0%;"><b>Konbaung Conquest of Shan States</b><br><i>1760s</i><br>Burmese Konbaung dynasty subdues major Shan saophas, integrating them into the Burmese kingdom.</div>`)[0];
+            popup_b84572b4ee336127d1e21bae501c0696.setContent(html_b0d48aae10b6149d99ae6ed78e5866ce);
+        
+
+        marker_5fed14048a3fb5a21bc0b9cd44bfb26e.bindPopup(popup_b84572b4ee336127d1e21bae501c0696)
+        ;
+
+        
+    
+    
+            marker_5fed14048a3fb5a21bc0b9cd44bfb26e.bindTooltip(
+                `<div>
+                     1760s - Konbaung Conquest of Shan States
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0c8211245bb82918ab98b7cf0cd118c8 = L.marker(
+                [22.0, 99.2],
+                {}
+            ).addTo(map_afddd1b3b336a5ac226c759adb7e60d2);
+        
+    
+            var icon_4e7460789eb86b7527b50bc28850ff9e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_0c8211245bb82918ab98b7cf0cd118c8.setIcon(icon_4e7460789eb86b7527b50bc28850ff9e);
+        
+    
+        var popup_607597c578545f281521f0f969e6ad1e = L.popup({"maxWidth": "100%"});
+
+        
+            var html_5a3df2d66a46bc411d9139d20750e4f6 = $(`<div id="html_5a3df2d66a46bc411d9139d20750e4f6" style="width: 100.0%; height: 100.0%;"><b>Annexation by Britain</b><br><i>1885–1890</i><br>After the Third Anglo-Burmese War, Britain incorporates Shan States under “Frontier Areas” administration.</div>`)[0];
+            popup_607597c578545f281521f0f969e6ad1e.setContent(html_5a3df2d66a46bc411d9139d20750e4f6);
+        
+
+        marker_0c8211245bb82918ab98b7cf0cd118c8.bindPopup(popup_607597c578545f281521f0f969e6ad1e)
+        ;
+
+        
+    
+    
+            marker_0c8211245bb82918ab98b7cf0cd118c8.bindTooltip(
+                `<div>
+                     1885–1890 - Annexation by Britain
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8e8586af5249acb411b1e7f21e118ca6 = L.marker(
+                [20.5, 96.9],
+                {}
+            ).addTo(map_afddd1b3b336a5ac226c759adb7e60d2);
+        
+    
+            var icon_11fb3f005342dc0acf06e26951f7f7a2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_8e8586af5249acb411b1e7f21e118ca6.setIcon(icon_11fb3f005342dc0acf06e26951f7f7a2);
+        
+    
+        var popup_37497cd83a2bcd395684c805eaf1711c = L.popup({"maxWidth": "100%"});
+
+        
+            var html_647e41c902e109e4ab97160dbbbb8069 = $(`<div id="html_647e41c902e109e4ab97160dbbbb8069" style="width: 100.0%; height: 100.0%;"><b>Panglong Agreement</b><br><i>1947</i><br>Ethnic leaders, including Shan saophas, sign agreement promising autonomy and right to secede.</div>`)[0];
+            popup_37497cd83a2bcd395684c805eaf1711c.setContent(html_647e41c902e109e4ab97160dbbbb8069);
+        
+
+        marker_8e8586af5249acb411b1e7f21e118ca6.bindPopup(popup_37497cd83a2bcd395684c805eaf1711c)
+        ;
+
+        
+    
+    
+            marker_8e8586af5249acb411b1e7f21e118ca6.bindTooltip(
+                `<div>
+                     1947 - Panglong Agreement
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8c5913602f53fa8101a21a24010a52c1 = L.marker(
+                [21.0, 96.5],
+                {}
+            ).addTo(map_afddd1b3b336a5ac226c759adb7e60d2);
+        
+    
+            var icon_9619b98800f493ad583e04a56fd6ed8b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_8c5913602f53fa8101a21a24010a52c1.setIcon(icon_9619b98800f493ad583e04a56fd6ed8b);
+        
+    
+        var popup_b30a918d8baae27d82966b2db0fd3169 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_26cf72d6d13b4a4aa57fa40879315166 = $(`<div id="html_26cf72d6d13b4a4aa57fa40879315166" style="width: 100.0%; height: 100.0%;"><b>Ne Win Coup</b><br><i>1962</i><br>General Ne Win seizes power, abolishes federal structure, triggering decades of Shan insurgency.</div>`)[0];
+            popup_b30a918d8baae27d82966b2db0fd3169.setContent(html_26cf72d6d13b4a4aa57fa40879315166);
+        
+
+        marker_8c5913602f53fa8101a21a24010a52c1.bindPopup(popup_b30a918d8baae27d82966b2db0fd3169)
+        ;
+
+        
+    
+    
+            marker_8c5913602f53fa8101a21a24010a52c1.bindTooltip(
+                `<div>
+                     1962 - Ne Win Coup
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_01b5c255fdd3ffc77e3ebe5177f32162 = L.marker(
+                [21.9, 98.3],
+                {}
+            ).addTo(map_afddd1b3b336a5ac226c759adb7e60d2);
+        
+    
+            var icon_24138988d9d4e32b735f870f0f2044e8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_01b5c255fdd3ffc77e3ebe5177f32162.setIcon(icon_24138988d9d4e32b735f870f0f2044e8);
+        
+    
+        var popup_b4134c5693bc39f7321551a5bee77911 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f93ef80f8cdda0d8193d50a9233f5e54 = $(`<div id="html_f93ef80f8cdda0d8193d50a9233f5e54" style="width: 100.0%; height: 100.0%;"><b>Forced Relocations in Shan State</b><br><i>1996</i><br>Tatmadaw launches massive relocation program displacing tens of thousands in central Shan State.</div>`)[0];
+            popup_b4134c5693bc39f7321551a5bee77911.setContent(html_f93ef80f8cdda0d8193d50a9233f5e54);
+        
+
+        marker_01b5c255fdd3ffc77e3ebe5177f32162.bindPopup(popup_b4134c5693bc39f7321551a5bee77911)
+        ;
+
+        
+    
+    
+            marker_01b5c255fdd3ffc77e3ebe5177f32162.bindTooltip(
+                `<div>
+                     1996 - Forced Relocations in Shan State
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9ee623ca830d7b628c7270d366f5dae1 = L.marker(
+                [22.9, 97.7],
+                {}
+            ).addTo(map_afddd1b3b336a5ac226c759adb7e60d2);
+        
+    
+            var icon_21aa8ca9825e12bd44195d0a28008fab = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_9ee623ca830d7b628c7270d366f5dae1.setIcon(icon_21aa8ca9825e12bd44195d0a28008fab);
+        
+    
+        var popup_fb018f24259265fca5d6ca3a6ee76bd4 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_152ac19167190611f023d76158199c9a = $(`<div id="html_152ac19167190611f023d76158199c9a" style="width: 100.0%; height: 100.0%;"><b>Military Coup and Renewed Conflict</b><br><i>2021</i><br>Military coup triggers intensified fighting between junta forces, Shan armies, and allied resistance.</div>`)[0];
+            popup_fb018f24259265fca5d6ca3a6ee76bd4.setContent(html_152ac19167190611f023d76158199c9a);
+        
+
+        marker_9ee623ca830d7b628c7270d366f5dae1.bindPopup(popup_fb018f24259265fca5d6ca3a6ee76bd4)
+        ;
+
+        
+    
+    
+            marker_9ee623ca830d7b628c7270d366f5dae1.bindTooltip(
+                `<div>
+                     2021 - Military Coup and Renewed Conflict
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0de78f945f5893c415afbd116a03e109 = L.marker(
+                [23.9, 98.6],
+                {}
+            ).addTo(map_afddd1b3b336a5ac226c759adb7e60d2);
+        
+    
+            var icon_7e700782d7fd906f39cc20d24ac1ff31 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_0de78f945f5893c415afbd116a03e109.setIcon(icon_7e700782d7fd906f39cc20d24ac1ff31);
+        
+    
+        var popup_09e3521df1675f6d3da44d6f4d554a3f = L.popup({"maxWidth": "100%"});
+
+        
+            var html_91517ad0c84ceb3122d47672ef3451e6 = $(`<div id="html_91517ad0c84ceb3122d47672ef3451e6" style="width: 100.0%; height: 100.0%;"><b>Operation 1027</b><br><i>2023</i><br>Multi-ethnic alliance seizes control of major towns along the China border, shifting balance of power.</div>`)[0];
+            popup_09e3521df1675f6d3da44d6f4d554a3f.setContent(html_91517ad0c84ceb3122d47672ef3451e6);
+        
+
+        marker_0de78f945f5893c415afbd116a03e109.bindPopup(popup_09e3521df1675f6d3da44d6f4d554a3f)
+        ;
+
+        
+    
+    
+            marker_0de78f945f5893c415afbd116a03e109.bindTooltip(
+                `<div>
+                     2023 - Operation 1027
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_d06b39051ec976ea4ef088d2f3106af9 = L.polyline(
+                [[22.5, 100.5], [22.3, 98.8], [22.0, 99.2], [20.5, 96.9], [21.0, 96.5], [21.9, 98.3], [22.9, 97.7], [23.9, 98.6]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": "5,5", "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_afddd1b3b336a5ac226c759adb7e60d2);
+        
+    
+            poly_line_d06b39051ec976ea4ef088d2f3106af9.bindTooltip(
+                `<div>
+                     Progression of major events over time
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>
