@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_be885bf9724070008ed9dbf7aae112ed {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_be885bf9724070008ed9dbf7aae112ed" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_be885bf9724070008ed9dbf7aae112ed = L.map(
+                "map_be885bf9724070008ed9dbf7aae112ed",
+                {
+                    center: [23.5, 97.5],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 7,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_10a8442eaf2817f9bf61e7988c7e3511 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_be885bf9724070008ed9dbf7aae112ed);
+        
+    
+            var marker_ce64b531c29fb14fe8a9330906f92fda = L.marker(
+                [23.433, 97.0],
+                {}
+            ).addTo(map_be885bf9724070008ed9dbf7aae112ed);
+        
+    
+            var icon_d791210b704507aef3247dfed6f9c76d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_ce64b531c29fb14fe8a9330906f92fda.setIcon(icon_d791210b704507aef3247dfed6f9c76d);
+        
+    
+        var popup_9ded88a88260fe2b4acda443a4a5962d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a92e836d54a54ae2501585209400c6d3 = $(`<div id="html_a92e836d54a54ae2501585209400c6d3" style="width: 100.0%; height: 100.0%;">Kyaukme: Airstrikes & artillery shelling; civilian deaths & destruction.</div>`)[0];
+            popup_9ded88a88260fe2b4acda443a4a5962d.setContent(html_a92e836d54a54ae2501585209400c6d3);
+        
+
+        marker_ce64b531c29fb14fe8a9330906f92fda.bindPopup(popup_9ded88a88260fe2b4acda443a4a5962d)
+        ;
+
+        
+    
+    
+            marker_ce64b531c29fb14fe8a9330906f92fda.bindTooltip(
+                `<div>
+                     Kyaukme
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cdade291290a8e6c9c11141e6f066da6 = L.marker(
+                [22.983, 96.717],
+                {}
+            ).addTo(map_be885bf9724070008ed9dbf7aae112ed);
+        
+    
+            var icon_67a27ff59c28fb0d8d99c3512b64584d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_cdade291290a8e6c9c11141e6f066da6.setIcon(icon_67a27ff59c28fb0d8d99c3512b64584d);
+        
+    
+        var popup_57f53dd0f517629f7dc8dfd59d65b7f8 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_36b10ff29699a5eba37e68bd3566090a = $(`<div id="html_36b10ff29699a5eba37e68bd3566090a" style="width: 100.0%; height: 100.0%;">Nawnghkio: Air & drone attacks; civilian casualties & building damage.</div>`)[0];
+            popup_57f53dd0f517629f7dc8dfd59d65b7f8.setContent(html_36b10ff29699a5eba37e68bd3566090a);
+        
+
+        marker_cdade291290a8e6c9c11141e6f066da6.bindPopup(popup_57f53dd0f517629f7dc8dfd59d65b7f8)
+        ;
+
+        
+    
+    
+            marker_cdade291290a8e6c9c11141e6f066da6.bindTooltip(
+                `<div>
+                     Nawnghkio
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b45b85db89f2244926253e829b2946a0 = L.marker(
+                [22.917, 96.5],
+                {}
+            ).addTo(map_be885bf9724070008ed9dbf7aae112ed);
+        
+    
+            var icon_20a44b4b806fe9a060857ea4c32b32e0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_b45b85db89f2244926253e829b2946a0.setIcon(icon_20a44b4b806fe9a060857ea4c32b32e0);
+        
+    
+        var popup_728fe13a3564136e0baa690a80a2aef9 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_eff3dfb639949072efd2dfa259d28805 = $(`<div id="html_eff3dfb639949072efd2dfa259d28805" style="width: 100.0%; height: 100.0%;">Mogok: Targeted bombing despite no active fighting; multiple deaths.</div>`)[0];
+            popup_728fe13a3564136e0baa690a80a2aef9.setContent(html_eff3dfb639949072efd2dfa259d28805);
+        
+
+        marker_b45b85db89f2244926253e829b2946a0.bindPopup(popup_728fe13a3564136e0baa690a80a2aef9)
+        ;
+
+        
+    
+    
+            marker_b45b85db89f2244926253e829b2946a0.bindTooltip(
+                `<div>
+                     Mogok
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5f93b8fb9079bf3a78aa5f3678da265a = L.marker(
+                [22.617, 97.3],
+                {}
+            ).addTo(map_be885bf9724070008ed9dbf7aae112ed);
+        
+    
+            var icon_bd82cb04a216df5a43691c5a42634af8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_5f93b8fb9079bf3a78aa5f3678da265a.setIcon(icon_bd82cb04a216df5a43691c5a42634af8);
+        
+    
+        var popup_1525edd037baab7f3447296efef2d1c0 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_319ec40f9aa3de3db67a29cdb070a4fc = $(`<div id="html_319ec40f9aa3de3db67a29cdb070a4fc" style="width: 100.0%; height: 100.0%;">Hsipaw: Airstrike; civilian casualties & school damage.</div>`)[0];
+            popup_1525edd037baab7f3447296efef2d1c0.setContent(html_319ec40f9aa3de3db67a29cdb070a4fc);
+        
+
+        marker_5f93b8fb9079bf3a78aa5f3678da265a.bindPopup(popup_1525edd037baab7f3447296efef2d1c0)
+        ;
+
+        
+    
+    
+            marker_5f93b8fb9079bf3a78aa5f3678da265a.bindTooltip(
+                `<div>
+                     Hsipaw
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cc572fcd6d6ba29dcb8df96e6d15b005 = L.marker(
+                [22.933, 97.383],
+                {}
+            ).addTo(map_be885bf9724070008ed9dbf7aae112ed);
+        
+    
+            var icon_2bf905a9df74c7a2a51358b89df27076 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_cc572fcd6d6ba29dcb8df96e6d15b005.setIcon(icon_2bf905a9df74c7a2a51358b89df27076);
+        
+    
+        var popup_5f63ca2bd7a5a56e2a7099212949e1e9 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_db006e263c424a059d2d1c036ee20829 = $(`<div id="html_db006e263c424a059d2d1c036ee20829" style="width: 100.0%; height: 100.0%;">Mongngawt: Bombing incidents; casualties reported.</div>`)[0];
+            popup_5f63ca2bd7a5a56e2a7099212949e1e9.setContent(html_db006e263c424a059d2d1c036ee20829);
+        
+
+        marker_cc572fcd6d6ba29dcb8df96e6d15b005.bindPopup(popup_5f63ca2bd7a5a56e2a7099212949e1e9)
+        ;
+
+        
+    
+    
+            marker_cc572fcd6d6ba29dcb8df96e6d15b005.bindTooltip(
+                `<div>
+                     Mongngawt
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ae4416352ece222917d66378c8b3a7b6 = L.marker(
+                [21.75, 97.6],
+                {}
+            ).addTo(map_be885bf9724070008ed9dbf7aae112ed);
+        
+    
+            var icon_e06024d90f92fed27ac747ad33e73a48 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_ae4416352ece222917d66378c8b3a7b6.setIcon(icon_e06024d90f92fed27ac747ad33e73a48);
+        
+    
+        var popup_ab11af229bb48eba8d5191c0f6374ab2 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_261d0e1c8960c4ea015014e5715ff08c = $(`<div id="html_261d0e1c8960c4ea015014e5715ff08c" style="width: 100.0%; height: 100.0%;">Monglon: Airstrike; 1 death, homes destroyed.</div>`)[0];
+            popup_ab11af229bb48eba8d5191c0f6374ab2.setContent(html_261d0e1c8960c4ea015014e5715ff08c);
+        
+
+        marker_ae4416352ece222917d66378c8b3a7b6.bindPopup(popup_ab11af229bb48eba8d5191c0f6374ab2)
+        ;
+
+        
+    
+    
+            marker_ae4416352ece222917d66378c8b3a7b6.bindTooltip(
+                `<div>
+                     Monglon
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_33eab85cf8b6856b50586a4b652f3e48 = L.marker(
+                [23.283, 97.583],
+                {}
+            ).addTo(map_be885bf9724070008ed9dbf7aae112ed);
+        
+    
+            var icon_016d7f685071d28d92a7f00b610fccd8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_33eab85cf8b6856b50586a4b652f3e48.setIcon(icon_016d7f685071d28d92a7f00b610fccd8);
+        
+    
+        var popup_fa072870eadb64877f168c8b3f16b841 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a6b02bbb7ed9e763b5cfa8b9d334c88d = $(`<div id="html_a6b02bbb7ed9e763b5cfa8b9d334c88d" style="width: 100.0%; height: 100.0%;">Kutkai: Airstrike; 6 killed incl. child, homes damaged.</div>`)[0];
+            popup_fa072870eadb64877f168c8b3f16b841.setContent(html_a6b02bbb7ed9e763b5cfa8b9d334c88d);
+        
+
+        marker_33eab85cf8b6856b50586a4b652f3e48.bindPopup(popup_fa072870eadb64877f168c8b3f16b841)
+        ;
+
+        
+    
+    
+            marker_33eab85cf8b6856b50586a4b652f3e48.bindTooltip(
+                `<div>
+                     Kutkai
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>
