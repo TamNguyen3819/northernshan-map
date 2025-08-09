@@ -1,299 +1,214 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    
-        <script>
-            L_NO_TOUCH = false;
-            L_DISABLE_3D = false;
-        </script>
-    
-    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
-    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
-    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
-    
-            <meta name="viewport" content="width=device-width,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-            <style>
-                #map_be885bf9724070008ed9dbf7aae112ed {
-                    position: relative;
-                    width: 100.0%;
-                    height: 100.0%;
-                    left: 0.0%;
-                    top: 0.0%;
-                }
-            </style>
-        
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Northern Shan Maps — Auto Index</title>
+  <style>
+    :root { --bg:#0b0d12; --card:#141925; --text:#e9eef7; --muted:#9fb0c7; --accent:#69a7ff; --border:#263148; }
+    html,body{height:100%; background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;}
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header { max-width:1100px; margin:32px auto 8px; padding:0 16px; }
+    header h1 { margin:0 0 6px; font-weight:700; letter-spacing:.3px; }
+    header p { margin:0; color:var(--muted); }
+    #controls{max-width:1100px; margin:12px auto 0; padding:0 16px; display:flex; gap:12px; flex-wrap:wrap;}
+    input[type="search"]{flex:1 1 280px; padding:10px 12px; border-radius:10px; border:1px solid var(--border); background:var(--card); color:var(--text);}
+    select{padding:10px 12px; border-radius:10px; border:1px solid var(--border); background:var(--card); color:var(--text);}
+    main { max-width:1100px; margin:16px auto 40px; padding:0 16px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:16px; }
+    .card { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; display:flex; flex-direction:column; }
+    .thumb { aspect-ratio: 16 / 10; background:#0f141f; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+    .thumb img{width:100%; height:100%; object-fit:cover; display:block;}
+    .thumb .fallback { color:var(--muted); font-size:14px; padding:10px; text-align:center; }
+    .meta { padding:12px 14px; display:flex; gap:8px; flex-direction:column; }
+    .name { font-weight:600; line-height:1.3; }
+    .row { display:flex; align-items:center; gap:10px; justify-content:space-between; color:var(--muted); font-size:12px; }
+    .badges { display:flex; gap:6px; flex-wrap:wrap; }
+    .badge { font-size:11px; padding:2px 8px; border-radius:999px; border:1px solid var(--border); background:#0f1623; color:var(--muted); }
+    .links { display:flex; gap:10px; margin-top:4px; }
+    .btn { display:inline-block; font-size:13px; padding:7px 10px; border-radius:10px; border:1px solid var(--border); background:#0f1623; color:var(--text); }
+    .btn:hover { background:#0e1a2b; text-decoration:none; }
+    footer { max-width:1100px; margin:8px auto 40px; padding:0 16px; color:var(--muted); font-size:12px; }
+    .hidden{display:none !important;}
+  </style>
 </head>
 <body>
-    
-    
-            <div class="folium-map" id="map_be885bf9724070008ed9dbf7aae112ed" ></div>
-        
-</body>
+  <header>
+    <h1>📍 Northern Shan Maps (Auto‑Index)</h1>
+    <p>All <code>.html</code> map files in this repository. Thumbnails are shown if a same‑name <code>.png/.jpg/.webp</code> exists.</p>
+  </header>
+
+  <section id="controls">
+    <input id="search" type="search" placeholder="Search maps by name…" />
+    <select id="folderFilter">
+      <option value="">All folders</option>
+    </select>
+  </section>
+
+  <main>
+    <div id="grid" class="grid" role="list"></div>
+  </main>
+
+  <footer>
+    <div id="status">Loading…</div>
+  </footer>
+
 <script>
-    
-    
-            var map_be885bf9724070008ed9dbf7aae112ed = L.map(
-                "map_be885bf9724070008ed9dbf7aae112ed",
-                {
-                    center: [23.5, 97.5],
-                    crs: L.CRS.EPSG3857,
-                    zoom: 7,
-                    zoomControl: true,
-                    preferCanvas: false,
-                }
-            );
+(async function () {
+  // --- CONFIG / AUTO-DETECT ---
+  // If hosted on GitHub Pages under https://USER.github.io/REPO/, derive owner/repo from path.
+  // Otherwise, you can hardcode OWNER/REPO below.
+  const pathParts = location.pathname.replace(/^\/+/,'').split('/');
+  let OWNER = pathParts[0]?.endsWith('.github.io') ? pathParts[0].replace('.github.io','') : pathParts[0];
+  let REPO  = pathParts[0]?.endsWith('.github.io') ? pathParts[1] : pathParts[1] || 'northernshan-map';
 
-            
+  // Fallbacks if opened locally
+  if (!OWNER || !REPO) { OWNER = 'TamNguyen3819'; REPO = 'northernshan-map'; }
 
-        
-    
-            var tile_layer_10a8442eaf2817f9bf61e7988c7e3511 = L.tileLayer(
-                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map_be885bf9724070008ed9dbf7aae112ed);
-        
-    
-            var marker_ce64b531c29fb14fe8a9330906f92fda = L.marker(
-                [23.433, 97.0],
-                {}
-            ).addTo(map_be885bf9724070008ed9dbf7aae112ed);
-        
-    
-            var icon_d791210b704507aef3247dfed6f9c76d = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
-            );
-            marker_ce64b531c29fb14fe8a9330906f92fda.setIcon(icon_d791210b704507aef3247dfed6f9c76d);
-        
-    
-        var popup_9ded88a88260fe2b4acda443a4a5962d = L.popup({"maxWidth": "100%"});
+  const repoApi      = `https://api.github.com/repos/${OWNER}/${REPO}`;
+  const contentsApi  = (path='') => `${repoApi}/contents/${path}`;
+  const branchesApi  = `${repoApi}`;
+  const treeApi      = (sha) => `${repoApi}/git/trees/${sha}?recursive=1`;
 
-        
-            var html_a92e836d54a54ae2501585209400c6d3 = $(`<div id="html_a92e836d54a54ae2501585209400c6d3" style="width: 100.0%; height: 100.0%;">Kyaukme: Airstrikes & artillery shelling; civilian deaths & destruction.</div>`)[0];
-            popup_9ded88a88260fe2b4acda443a4a5962d.setContent(html_a92e836d54a54ae2501585209400c6d3);
-        
+  const statusEl = document.getElementById('status');
+  const grid = document.getElementById('grid');
+  const search = document.getElementById('search');
+  const folderFilter = document.getElementById('folderFilter');
 
-        marker_ce64b531c29fb14fe8a9330906f92fda.bindPopup(popup_9ded88a88260fe2b4acda443a4a5962d)
-        ;
+  // GitHub Pages base URL for relative links (works both on Pages and local preview)
+  const pagesBase = `${location.origin}/${OWNER}.github.io` === location.origin
+    ? `${location.origin}/${REPO}/`
+    : `${location.origin}${location.pathname.replace(/[^/]*$/, '')}`;
 
-        
-    
-    
-            marker_ce64b531c29fb14fe8a9330906f92fda.bindTooltip(
-                `<div>
-                     Kyaukme
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_cdade291290a8e6c9c11141e6f066da6 = L.marker(
-                [22.983, 96.717],
-                {}
-            ).addTo(map_be885bf9724070008ed9dbf7aae112ed);
-        
-    
-            var icon_67a27ff59c28fb0d8d99c3512b64584d = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
-            );
-            marker_cdade291290a8e6c9c11141e6f066da6.setIcon(icon_67a27ff59c28fb0d8d99c3512b64584d);
-        
-    
-        var popup_57f53dd0f517629f7dc8dfd59d65b7f8 = L.popup({"maxWidth": "100%"});
+  // Helper: escape HTML
+  const esc = (s) => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-        
-            var html_36b10ff29699a5eba37e68bd3566090a = $(`<div id="html_36b10ff29699a5eba37e68bd3566090a" style="width: 100.0%; height: 100.0%;">Nawnghkio: Air & drone attacks; civilian casualties & building damage.</div>`)[0];
-            popup_57f53dd0f517629f7dc8dfd59d65b7f8.setContent(html_36b10ff29699a5eba37e68bd3566090a);
-        
+  try {
+    // 1) Discover default branch
+    const repoInfo = await fetch(branchesApi).then(r => r.json());
+    const defaultBranch = repoInfo.default_branch || 'main';
 
-        marker_cdade291290a8e6c9c11141e6f066da6.bindPopup(popup_57f53dd0f517629f7dc8dfd59d65b7f8)
-        ;
+    // 2) Get the full tree (recursive) for the default branch
+    const branch = await fetch(`${repoApi}/branches/${defaultBranch}`).then(r => r.json());
+    const tree = await fetch(treeApi(branch.commit.sha)).then(r => r.json());
 
-        
-    
-    
-            marker_cdade291290a8e6c9c11141e6f066da6.bindTooltip(
-                `<div>
-                     Nawnghkio
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_b45b85db89f2244926253e829b2946a0 = L.marker(
-                [22.917, 96.5],
-                {}
-            ).addTo(map_be885bf9724070008ed9dbf7aae112ed);
-        
-    
-            var icon_20a44b4b806fe9a060857ea4c32b32e0 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
-            );
-            marker_b45b85db89f2244926253e829b2946a0.setIcon(icon_20a44b4b806fe9a060857ea4c32b32e0);
-        
-    
-        var popup_728fe13a3564136e0baa690a80a2aef9 = L.popup({"maxWidth": "100%"});
+    if (!tree || !Array.isArray(tree.tree)) throw new Error('Could not fetch tree');
 
-        
-            var html_eff3dfb639949072efd2dfa259d28805 = $(`<div id="html_eff3dfb639949072efd2dfa259d28805" style="width: 100.0%; height: 100.0%;">Mogok: Targeted bombing despite no active fighting; multiple deaths.</div>`)[0];
-            popup_728fe13a3564136e0baa690a80a2aef9.setContent(html_eff3dfb639949072efd2dfa259d28805);
-        
+    // 3) Build file lists/sets
+    const allEntries = tree.tree.filter(e => e.type === 'blob');
+    const htmlFiles = allEntries
+      .filter(f => f.path.toLowerCase().endsWith('.html'))
+      .filter(f => !/^(?:index|readme)\.html$/i.test(f.path.split('/').pop())); // ignore index.html/readme.html
+    const images = allEntries.filter(f => /\.(png|jpe?g|webp)$/i.test(f.path));
+    const imageSet = new Set(images.map(f => f.path.toLowerCase()));
 
-        marker_b45b85db89f2244926253e829b2946a0.bindPopup(popup_728fe13a3564136e0baa690a80a2aef9)
-        ;
+    // 4) Build folder options
+    const folders = Array.from(new Set(htmlFiles.map(f => f.path.includes('/') ? f.path.split('/').slice(0,-1).join('/') : '(root)'))).sort();
+    folders.forEach(p => {
+      const opt = document.createElement('option');
+      opt.value = p === '(root)' ? '' : p;
+      opt.textContent = p;
+      folderFilter.appendChild(opt);
+    });
 
-        
-    
-    
-            marker_b45b85db89f2244926253e829b2946a0.bindTooltip(
-                `<div>
-                     Mogok
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_5f93b8fb9079bf3a78aa5f3678da265a = L.marker(
-                [22.617, 97.3],
-                {}
-            ).addTo(map_be885bf9724070008ed9dbf7aae112ed);
-        
-    
-            var icon_bd82cb04a216df5a43691c5a42634af8 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
-            );
-            marker_5f93b8fb9079bf3a78aa5f3678da265a.setIcon(icon_bd82cb04a216df5a43691c5a42634af8);
-        
-    
-        var popup_1525edd037baab7f3447296efef2d1c0 = L.popup({"maxWidth": "100%"});
+    // 5) Render cards
+    const cards = htmlFiles.map(file => {
+      const path = file.path;                           // e.g., "maps/shan-state-timelines-map.html"
+      const fileName = path.split('/').pop();          // e.g., "shan-state-timelines-map.html"
+      const base = fileName.replace(/\.[^.]+$/,'');    // "shan-state-timelines-map"
+      const folder = path.includes('/') ? path.split('/').slice(0,-1).join('/') : '';
 
-        
-            var html_319ec40f9aa3de3db67a29cdb070a4fc = $(`<div id="html_319ec40f9aa3de3db67a29cdb070a4fc" style="width: 100.0%; height: 100.0%;">Hsipaw: Airstrike; civilian casualties & school damage.</div>`)[0];
-            popup_1525edd037baab7f3447296efef2d1c0.setContent(html_319ec40f9aa3de3db67a29cdb070a4fc);
-        
+      const candidateThumbs = [`${folder?folder+'/':''}${base}.png`, `${folder?folder+'/':''}${base}.jpg`, `${folder?folder+'/':''}${base}.jpeg`, `${folder?folder+'/':''}${base}.webp`];
+      const thumbPath = candidateThumbs.find(p => imageSet.has(p.toLowerCase()));
+      const pagesLink = `./${encodeURI(path)}`;  // relative link works on Pages
+      const rawLink   = `https://raw.githubusercontent.com/${OWNER}/${REPO}/${defaultBranch}/${encodeURI(path)}`;
+      const ghLink    = `https://github.com/${OWNER}/${REPO}/blob/${defaultBranch}/${encodeURI(path)}`;
 
-        marker_5f93b8fb9079bf3a78aa5f3678da265a.bindPopup(popup_1525edd037baab7f3447296efef2d1c0)
-        ;
+      // card element
+      const card = document.createElement('article');
+      card.className = 'card';
+      card.dataset.path = path;
+      card.dataset.folder = folder;
+      card.dataset.name = base.toLowerCase();
 
-        
-    
-    
-            marker_5f93b8fb9079bf3a78aa5f3678da265a.bindTooltip(
-                `<div>
-                     Hsipaw
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_cc572fcd6d6ba29dcb8df96e6d15b005 = L.marker(
-                [22.933, 97.383],
-                {}
-            ).addTo(map_be885bf9724070008ed9dbf7aae112ed);
-        
-    
-            var icon_2bf905a9df74c7a2a51358b89df27076 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
-            );
-            marker_cc572fcd6d6ba29dcb8df96e6d15b005.setIcon(icon_2bf905a9df74c7a2a51358b89df27076);
-        
-    
-        var popup_5f63ca2bd7a5a56e2a7099212949e1e9 = L.popup({"maxWidth": "100%"});
+      const thumb = document.createElement('div');
+      thumb.className = 'thumb';
+      if (thumbPath) {
+        const img = document.createElement('img');
+        img.alt = base;
+        img.loading = 'lazy';
+        img.src = `./${encodeURI(thumbPath)}`;
+        thumb.appendChild(img);
+      } else {
+        const fb = document.createElement('div');
+        fb.className = 'fallback';
+        fb.textContent = 'No thumbnail';
+        thumb.appendChild(fb);
+      }
 
-        
-            var html_db006e263c424a059d2d1c036ee20829 = $(`<div id="html_db006e263c424a059d2d1c036ee20829" style="width: 100.0%; height: 100.0%;">Mongngawt: Bombing incidents; casualties reported.</div>`)[0];
-            popup_5f63ca2bd7a5a56e2a7099212949e1e9.setContent(html_db006e263c424a059d2d1c036ee20829);
-        
+      const meta = document.createElement('div');
+      meta.className = 'meta';
 
-        marker_cc572fcd6d6ba29dcb8df96e6d15b005.bindPopup(popup_5f63ca2bd7a5a56e2a7099212949e1e9)
-        ;
+      const name = document.createElement('div');
+      name.className = 'name';
+      name.innerHTML = `<a href="${pagesLink}">${esc(fileName)}</a>`;
 
-        
-    
-    
-            marker_cc572fcd6d6ba29dcb8df96e6d15b005.bindTooltip(
-                `<div>
-                     Mongngawt
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_ae4416352ece222917d66378c8b3a7b6 = L.marker(
-                [21.75, 97.6],
-                {}
-            ).addTo(map_be885bf9724070008ed9dbf7aae112ed);
-        
-    
-            var icon_e06024d90f92fed27ac747ad33e73a48 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
-            );
-            marker_ae4416352ece222917d66378c8b3a7b6.setIcon(icon_e06024d90f92fed27ac747ad33e73a48);
-        
-    
-        var popup_ab11af229bb48eba8d5191c0f6374ab2 = L.popup({"maxWidth": "100%"});
+      const row = document.createElement('div');
+      row.className = 'row';
+      const where = document.createElement('div');
+      where.className = 'badges';
+      if (folder) {
+        const b = document.createElement('span'); b.className='badge'; b.textContent=folder;
+        where.appendChild(b);
+      } else {
+        const b = document.createElement('span'); b.className='badge'; b.textContent='(root)';
+        where.appendChild(b);
+      }
+      const size = document.createElement('div');
+      size.textContent = `${(file.size/1024).toFixed(1)} KB`;
 
-        
-            var html_261d0e1c8960c4ea015014e5715ff08c = $(`<div id="html_261d0e1c8960c4ea015014e5715ff08c" style="width: 100.0%; height: 100.0%;">Monglon: Airstrike; 1 death, homes destroyed.</div>`)[0];
-            popup_ab11af229bb48eba8d5191c0f6374ab2.setContent(html_261d0e1c8960c4ea015014e5715ff08c);
-        
+      row.appendChild(where);
+      row.appendChild(size);
 
-        marker_ae4416352ece222917d66378c8b3a7b6.bindPopup(popup_ab11af229bb48eba8d5191c0f6374ab2)
-        ;
+      const links = document.createElement('div');
+      links.className = 'links';
+      links.innerHTML = `
+        <a class="btn" href="${pagesLink}">Open</a>
+        <a class="btn" href="${ghLink}" target="_blank" rel="noopener">View on GitHub</a>
+        <a class="btn" href="${rawLink}" target="_blank" rel="noopener">Raw</a>
+      `;
 
-        
-    
-    
-            marker_ae4416352ece222917d66378c8b3a7b6.bindTooltip(
-                `<div>
-                     Monglon
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_33eab85cf8b6856b50586a4b652f3e48 = L.marker(
-                [23.283, 97.583],
-                {}
-            ).addTo(map_be885bf9724070008ed9dbf7aae112ed);
-        
-    
-            var icon_016d7f685071d28d92a7f00b610fccd8 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
-            );
-            marker_33eab85cf8b6856b50586a4b652f3e48.setIcon(icon_016d7f685071d28d92a7f00b610fccd8);
-        
-    
-        var popup_fa072870eadb64877f168c8b3f16b841 = L.popup({"maxWidth": "100%"});
+      meta.appendChild(name);
+      meta.appendChild(row);
+      meta.appendChild(links);
 
-        
-            var html_a6b02bbb7ed9e763b5cfa8b9d334c88d = $(`<div id="html_a6b02bbb7ed9e763b5cfa8b9d334c88d" style="width: 100.0%; height: 100.0%;">Kutkai: Airstrike; 6 killed incl. child, homes damaged.</div>`)[0];
-            popup_fa072870eadb64877f168c8b3f16b841.setContent(html_a6b02bbb7ed9e763b5cfa8b9d334c88d);
-        
+      card.appendChild(thumb);
+      card.appendChild(meta);
+      return card;
+    });
 
-        marker_33eab85cf8b6856b50586a4b652f3e48.bindPopup(popup_fa072870eadb64877f168c8b3f16b841)
-        ;
+    grid.replaceChildren(...cards);
+    statusEl.textContent = `Found ${cards.length} map file${cards.length!==1?'s':''} in “${OWNER}/${REPO}” (branch: ${defaultBranch}).`;
 
-        
-    
-    
-            marker_33eab85cf8b6856b50586a4b652f3e48.bindTooltip(
-                `<div>
-                     Kutkai
-                 </div>`,
-                {"sticky": true}
-            );
-        
+    // 6) Filters
+    function applyFilters(){
+      const q = (search.value || '').trim().toLowerCase();
+      const folderVal = folderFilter.value;
+      for (const card of grid.children) {
+        const matchesText = !q || card.dataset.name.includes(q) || card.dataset.path.toLowerCase().includes(q);
+        const matchesFolder = !folderVal || card.dataset.folder === folderVal;
+        card.classList.toggle('hidden', !(matchesText && matchesFolder));
+      }
+    }
+    search.addEventListener('input', applyFilters);
+    folderFilter.addEventListener('change', applyFilters);
+
+  } catch (e) {
+    console.error(e);
+    statusEl.textContent = 'Failed to load file list from GitHub API. (Unauthenticated rate limit is ~60 requests/hour.)';
+  }
+})();
 </script>
+</body>
 </html>
